@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setRoundedFields()
+        addImageToTextField()
     }
 
     @IBAction func signUpButton(_ sender: Any) {
@@ -80,6 +81,33 @@ extension SignUpViewController {
         
         viewBelowEmail.backgroundColor = UIColor.white.withAlphaComponent(0.45)
         viewBelowPassword.backgroundColor = UIColor.white.withAlphaComponent(0.45)
+    }
+    
+    func addImageToTextField(){
+        addImageToPasswordField()
+        addImageToUsernameField()
+    }
+    
+    func addImageToUsernameField(){
+        let imageView = UIImageView()
+        let image = UIImage(named: "email")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 17)
+        imageView.contentMode = .scaleAspectFit
+        emailField.leftViewMode = UITextField.ViewMode.always
+        emailField.leftView = imageView
+        emailField.addSubview(imageView)
+    }
+    
+    func addImageToPasswordField(){
+        let imageView = UIImageView()
+        let image = UIImage(named: "password")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 17)
+        imageView.contentMode = .scaleAspectFit
+        passwordField.leftViewMode = UITextField.ViewMode.always
+        passwordField.leftView = imageView
+        passwordField.addSubview(imageView)
     }
 
 

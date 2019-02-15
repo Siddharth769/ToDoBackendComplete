@@ -22,6 +22,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setRoundedFields()
+        addImageToTextField()
     }
     
     @IBAction func signInButton(_ sender: Any) {
@@ -123,6 +124,33 @@ extension SignInViewController {
         
         viewBelowUsername.backgroundColor = UIColor.white.withAlphaComponent(0.45)
         viewBelowPassword.backgroundColor = UIColor.white.withAlphaComponent(0.45)
+    }
+    
+    func addImageToTextField(){
+        addImageToPasswordField()
+        addImageToUsernameField()
+    }
+    
+    func addImageToUsernameField(){
+        let imageView = UIImageView()
+        let image = UIImage(named: "email")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 17)
+        imageView.contentMode = .scaleAspectFit
+        usernameField.leftViewMode = UITextField.ViewMode.always
+        usernameField.leftView = imageView
+        usernameField.addSubview(imageView)
+    }
+    
+    func addImageToPasswordField(){
+        let imageView = UIImageView()
+        let image = UIImage(named: "password")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 17)
+        imageView.contentMode = .scaleAspectFit
+        passwordField.leftViewMode = UITextField.ViewMode.always
+        passwordField.leftView = imageView
+        passwordField.addSubview(imageView)
     }
     
     

@@ -38,19 +38,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func addButton(_ sender: Any) {
-        let prompt = UIAlertController(title: "ToDo App", message: "ToDo Item", preferredStyle: .alert)
+        let prompt = UIAlertController(title: "To Do App", message: "To Do Item", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             let userInput = prompt.textFields![0].text
             if (userInput!.isEmpty) {
                 return
             }
-    self.ref.child("users").child(self.user.uid).child("items").childByAutoId().child("title").setValue(userInput)
+            self.ref.child("users").child(self.user.uid).child("items").childByAutoId().child("title").setValue(userInput)
         }
         prompt.addTextField(configurationHandler: nil)
         prompt.addAction(okAction)
         present(prompt, animated: true, completion: nil);
 
-       
     }
     
     func startObservingDatabase(){
@@ -68,9 +67,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
-    deinit {
-        ref.child("users/\(self.user.uid)/items").removeObserver(withHandle: databaseHandle)
-    }
+//    deinit {
+//        ref.child("users/\(self.user.uid)/items").removeObserver(withHandle: databaseHandle)
+//    }
 }
 
 extension HomeViewController {

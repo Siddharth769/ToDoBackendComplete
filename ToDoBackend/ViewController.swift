@@ -23,7 +23,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-
+        autoSignIn()
+    }
+    
+    func autoSignIn(){
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.signIn()
+            }
+        }
     }
     
     func signIn() {
